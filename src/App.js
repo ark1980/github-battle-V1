@@ -1,14 +1,14 @@
 import React,{Component} from 'react'
+import Popular from './components/Popular';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
+  
+
   render() {
-    return(
-      <div>
-        <h1>App</h1>
+    return (
+      <div className="App">
+        <Popular />
       </div>
     )
   }
