@@ -1,5 +1,5 @@
 export const fetchLanguageRepos = (lang) => {
-  const endPoint = `https://api.github.com/search/repositories?q=language:${lang}+stars:>=10000&sort=stars&order=desc`
+  const endPoint = `https://api.github.com/search/repositories?q=stars:>1+language:${lang}&sort=stars&order=desc&type=Repositories`
 
   return fetch(endPoint)
     .then(res => res.json())

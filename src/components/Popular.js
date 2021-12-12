@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LangaugesNav from './LangaugesNav'
 import {fetchLanguageRepos} from './utils/api'
+import ReposList from './ReposList'
 
 export class Popular extends Component {
   constructor(props) {
@@ -65,7 +66,7 @@ export class Popular extends Component {
         
         {error && <p>{error}</p>}
 
-        {repos[selectedLanguage] && <pre>{JSON.stringify(repos[selectedLanguage], null, 2)}</pre>}
+        {repos[selectedLanguage] && <ReposList repos={repos[selectedLanguage]}/>}
       </>
     )
   }
