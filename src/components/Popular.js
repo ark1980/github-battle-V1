@@ -8,7 +8,7 @@ export class Popular extends Component {
 
     this.state = {
       selectedLanguage: 'All',
-      repos: null,
+      repos: {},
       error: null
     }
     this.updateLanguage = this.updateLanguage.bind(this)
@@ -22,26 +22,34 @@ export class Popular extends Component {
   updateLanguage(language) {
     this.setState({
       selectedLanguage: language,
-      repos: null,
       error: null
     })
-
-    fetchLanguageRepos(language)
-    .then(repos => this.setState({
-      repos,
-      error: null
-    }))
-    .catch(error => {
-      console.warn('Error fetching repos: ', error);
-
-      this.setState({
-        error: 'There was an error fetching the repositories.'
-      })
-    })
+    // caching repos to not sending request to 
+    // fetch data everytime we click on a language
+    if (!this.state.repos[language]) {
+      fetchLanguageRepos(language)
+        .then(data => {
+          this.setState(({ repos }) => ({
+            repos: {
+              ...repos,
+              [language]: data
+            }
+          }))
+        })
+        .catch((err) => {
+          console.warn('Error fetching repos: ', err)
+  
+          this.setState({
+            error: 'There was an error to fetching repositories'
+          })
+        })
+    }
   }
 
   isLoading() {
-    return this.state.repos === null && this.state.error === null
+    const {repos, error, selectedLanguage} = this.state;
+
+    return !repos[selectedLanguage] && error === null
   }
 
   render() {
@@ -57,7 +65,7 @@ export class Popular extends Component {
         
         {error && <p>{error}</p>}
 
-        {repos && <pre>{JSON.stringify(repos, null, 2)}</pre>}
+        {repos[selectedLanguage] && <pre>{JSON.stringify(repos[selectedLanguage], null, 2)}</pre>}
       </>
     )
   }
