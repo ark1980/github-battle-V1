@@ -1,22 +1,14 @@
-.App {
-  margin: auto;
-  text-align: center;
-  max-width: 70%;
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 
-button {
-  cursor: pointer;
-}
-
-.btn-nav {
-  border: none;
-  background-color: transparent;
-  font-size: 1.2em;
-}
-
-.nav-link {
-  font-weight: bold;
-  color: red;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, Helvetica Neue, sans-serif;
 }
 
 ul {
@@ -27,11 +19,39 @@ li {
   list-style-type: none;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.dark {
+  color: #dadada;
+  background: #1c2022;
+  min-height: 100%;
+}
+
 .flex-center {
-  margin: 3rem auto;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+.btn-clear {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-link {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav li {
+  margin-right: 10px;
 }
 
 .grid {
@@ -43,10 +63,20 @@ li {
   justify-content: space-around;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
 .header-lg {
   font-size: 35px;
   font-weight: 300;
   margin: 20px;
+}
+
+.header-sm {
+  font-size: 28px;
+  font-weight: 300;
+  margin: 10px;
 }
 
 .avatar {
@@ -92,16 +122,157 @@ li {
   border-radius: 3px;
 }
 
-.repo {
+.card {
   margin: 10px 0;
   width: 250px;
   padding: 20px;
 }
 
-.repo a {
+.card a {
   text-decoration: none;
 }
 
-.repo img {
+.card img {
   margin-bottom: 8px;
+}
+
+.instructions-container {
+  margin: 100px 0;
+}
+
+.container-sm {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.battle-instructions {
+  padding: 0;
+  font-size: 25px;
+}
+
+.battle-instructions li {
+  flex: 1;
+  min-width: 300px;
+}
+
+.battle-instructions svg {
+  padding: 40px;
+  border-radius: 3px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.player {
+  flex: 1;
+  margin: 0 20px;
+  padding: 10px;
+}
+
+.player-label {
+  font-size: 20px;
+  margin: 5px 0;
+  font-weight: 300;
+}
+
+.player-inputs input {
+  padding: 8px;
+  font-size: 16px;
+  flex: 2;
+  border-radius: 3px;
+  border: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.player-inputs .input-light {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.player-inputs button {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.btn {
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  border-radius: 3px;
+  border: none;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  max-width: 200px;
+}
+
+.dark-btn {
+  color: #e6e6e6;
+  background: #141414;
+}
+
+.dark-btn:disabled {
+  background: #f2f2f2;
+  color: #c7c7c7;
+}
+
+.players-container {
+  margin: 100px 0;
+}
+
+.avatar-small {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.player-info {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.player-info .link {
+  margin-left: 10px;
+}
+
+.btn-space {
+  margin: 40px auto;
+}
+
+.error {
+  color: #ff1616;
+  font-size: 20px;
+  margin: 50px 0;
+}
+
+.bg-dark {
+  background: rgb(36, 40, 42);
+  border-radius: 3px;
+}
+
+.player-inputs .input-dark {
+  color: #dadada;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.light-btn {
+  color: #000;
+  background: #aaa8a8;
+}
+
+.light-btn:disabled {
+  background: #292929;
+  color: #4a4a4a;
 }
