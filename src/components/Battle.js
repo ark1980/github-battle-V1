@@ -2,6 +2,7 @@ import React from 'react'
 import Instruction from './Instruction';
 import PlayerInput from './PlayerInput'
 import PlayerPreview from './PlayerPreview';
+import Results from './Results'
 
 class Battle extends React.Component {
   constructor(props) {
@@ -10,9 +11,12 @@ class Battle extends React.Component {
     this.state = {
        playerOne: null,
        playerTwo: null,
+       battle: false,
     }
+
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleReset = this.handleReset.bind(this)
+
   }
 
   handleSubmit(id, player) {
@@ -28,7 +32,12 @@ class Battle extends React.Component {
   }
   
   render() {
-    const {playerOne, playerTwo} = this.state
+    const { playerOne, playerTwo, battle } = this.state
+
+    if (battle === true) {
+      return <Results playerOne={playerOne} playerTwo={playerTwo} />
+    }
+
     return(
       <>
         <Instruction />
@@ -58,7 +67,17 @@ class Battle extends React.Component {
                 label="Player Two"
               />
             }
+
+
           </div>
+
+            {playerOne && playerTwo && 
+              <button 
+                className='btn dark-btn btn-space' onClick={() => this.setState({battle: true})}>
+                battle
+              </button>
+            }
+
         </div>
       </>
     )
