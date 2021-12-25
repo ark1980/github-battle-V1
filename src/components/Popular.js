@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import LangaugesNav from './LangaugesNav'
 import {fetchLanguageRepos} from './utils/api'
 import ReposList from './ReposList'
+import Loading from './Loading'
 
 export class Popular extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ export class Popular extends Component {
           updateLanguage={this.updateLanguage}
         />
 
-        {this.isLoading() && <p>IS LOADING...</p>}
+        {this.isLoading() && <Loading text='Fetching Popular Repos'/>}
         
         {error && <p>{error}</p>}
 

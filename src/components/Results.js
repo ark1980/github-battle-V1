@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { battle } from './utils/api'
 import { FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser } from 'react-icons/fa'
+import Loading from './Loading'
 
 class Results extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class Results extends React.Component {
     const { winner, loser, error, loading } = this.state
 
     if (loading === true) {
-      return <p>LOADING</p>
+      return <Loading text="Batteling"/>
     }
 
     if (error) {
