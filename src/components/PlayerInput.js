@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { ThemeConsumer } from '../context/ThemeContext'
 
 export default class PlayerInput extends React.Component {
   constructor(props) {
@@ -24,27 +25,31 @@ export default class PlayerInput extends React.Component {
   
   render() {
     return (
-      <form className='column player' onSubmit={this.handleSubmit}>
-        <label htmlFor='username' className='player-label'>
-          {this.props.label}
-        </label>
-        <div className='row player-inputs'>
-          <input
-            id='username'
-            className='input-light'
-            type="text"
-            onChange={this.handleChange}
-            placeholder='Github Username'
-            value={this.state.username}
-          />
-          <button 
-            type="submit" 
-            className='btn dark-btn'
-            disabled={!this.state.username}
-          >submit
-          </button>
-        </div>
-      </form>
+      <ThemeConsumer>
+      {({theme}) => (
+        <form className='column player' onSubmit={this.handleSubmit}>
+          <label htmlFor='username' className='player-label'>
+            {this.props.label}
+          </label>
+          <div className='row player-inputs'>
+            <input
+              id='username'
+              className={`input-${theme}`}
+              type="text"
+              onChange={this.handleChange}
+              placeholder='Github Username'
+              value={this.state.username}
+            />
+            <button 
+              type="submit" 
+              className={`btn ${theme}-btn`}
+              disabled={!this.state.username}
+            >submit
+            </button>
+          </div>
+        </form>
+      )}
+      </ThemeConsumer>
     )
   }
 }
